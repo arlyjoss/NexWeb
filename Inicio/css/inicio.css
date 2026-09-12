@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+}
+
+
+/* ENCABEZADO */
+
+.encabezado {
+    width: 100%;
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 6%;
+
+    background: white;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo a {
+    text-decoration: none;
+    color: #222;
+
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+/* MENÚ */
+
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+
+    font-weight: bold;
+}
+
+.menu a:hover {
+    color: #666;
+}
+
+
+/* CARRITO */
+
+.carrito {
+    text-decoration: none;
+
+    background: #222;
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+#contadorCarrito {
+    margin-left: 5px;
+
+    padding: 3px 7px;
+
+    border-radius: 50%;
+
+    background: white;
+    color: #222;
+}
+
+
+/* INICIO */
+
+.inicio {
+    min-height: 430px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 50px 20px;
+
+    background: white;
+}
+
+.inicio h1 {
+    font-size: 50px;
+
+    margin-bottom: 20px;
+}
+
+.inicio p {
+    font-size: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+/* BOTÓN */
+
+.boton {
+    text-decoration: none;
+
+    background: #222;
+    color: white;
+
+    padding: 14px 28px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* CATEGORÍAS */
+
+.categorias {
+    padding: 70px 6%;
+
+    text-align: center;
+}
+
+.categorias h2 {
+    font-size: 34px;
+
+    margin-bottom: 40px;
+}
+
+.categorias-contenedor {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 20px;
+}
+
+.categoria {
+    background: white;
+
+    padding: 30px 20px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.categoria h3 {
+    margin-bottom: 10px;
+}
+
+
+/* PRODUCTOS */
+
+.productos {
+    padding: 70px 6%;
+
+    background: white;
+
+    text-align: center;
+}
+
+.productos h2 {
+    font-size: 34px;
+
+    margin-bottom: 40px;
+}
+
+.productos-contenedor {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 25px;
+}
+
+
+/* PRODUCTO */
+
+.producto {
+    background: #f5f5f5;
+
+    padding-bottom: 25px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.producto-imagen {
+    height: 200px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #e5e5e5;
+
+    font-size: 80px;
+}
+
+.producto h3 {
+    font-size: 22px;
+
+    margin: 20px 20px 10px;
+}
+
+.producto p {
+    color: #666;
+
+    margin: 0 20px 15px;
+}
+
+.producto strong {
+    display: block;
+
+    font-size: 24px;
+
+    margin-bottom: 20px;
+}
+
+
+/* BOTÓN DEL PRODUCTO */
+
+.producto button {
+    width: calc(100% - 40px);
+
+    margin: 0 20px;
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #222;
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.producto button:hover {
+    background: #444;
+}
+
+
+/* NOTIFICACIÓN */
+
+.notificacion {
+    position: fixed;
+
+    top: 90px;
+    right: 25px;
+
+    min-width: 270px;
+
+    padding: 18px 22px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    opacity: 0;
+
+    transform: translateX(400px);
+
+    transition:
+        opacity 0.3s,
+        transform 0.3s;
+
+    z-index: 2000;
+}
+
+.notificacion.mostrar {
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+.notificacion strong {
+    font-size: 18px;
+}
+
+
+/* FOOTER */
+
+.footer {
+    background: #222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+
+    .encabezado {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .inicio h1 {
+        font-size: 40px;
+    }
+
+}
