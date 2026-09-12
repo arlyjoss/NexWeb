@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>NexWeb - Inicio</title>
 
     <link rel="stylesheet" href="css/inicio.css">
+
 </head>
+
 
 <body>
 
+
     <!-- ENCABEZADO -->
+
     <header class="encabezado">
 
         <div class="logo">
             <a href="index.html">NexWeb</a>
         </div>
 
+
         <nav class="menu">
+
             <a href="index.html">Inicio</a>
+
             <a href="../Interfaces/interfaces.html">Productos</a>
+
             <a href="../Chat/chat.html">Chat</a>
+
             <a href="../Login/login.html">Iniciar sesión</a>
+
         </nav>
 
+
         <a href="../Interfaces/carrito.html" class="carrito">
+
             🛒 Carrito
+
             <span id="contadorCarrito">0</span>
+
         </a>
 
     </header>
 
 
+
     <!-- CONTENIDO PRINCIPAL -->
+
     <main>
 
-        <!-- PRESENTACIÓN -->
+
+        <!-- INICIO -->
+
         <section class="inicio">
 
             <h1>Bienvenido a NexWeb</h1>
@@ -52,31 +73,58 @@
         </section>
 
 
+
         <!-- CATEGORÍAS -->
+
         <section class="categorias">
 
             <h2>Categorías</h2>
 
+
             <div class="categorias-contenedor">
 
+
                 <div class="categoria">
+
                     <h3>Ropa</h3>
-                    <p>Encuentra prendas para todos los estilos.</p>
+
+                    <p>
+                        Encuentra prendas para todos los estilos.
+                    </p>
+
                 </div>
 
+
                 <div class="categoria">
+
                     <h3>Calzado</h3>
-                    <p>Elige entre diferentes opciones de calzado.</p>
+
+                    <p>
+                        Elige entre diferentes opciones de calzado.
+                    </p>
+
                 </div>
 
+
                 <div class="categoria">
+
                     <h3>Accesorios</h3>
-                    <p>Complementa tus compras con accesorios.</p>
+
+                    <p>
+                        Complementa tus compras con accesorios.
+                    </p>
+
                 </div>
 
+
                 <div class="categoria">
+
                     <h3>Hogar</h3>
-                    <p>Productos útiles para tu hogar.</p>
+
+                    <p>
+                        Productos útiles para tu hogar.
+                    </p>
+
                 </div>
 
             </div>
@@ -84,15 +132,19 @@
         </section>
 
 
+
         <!-- PRODUCTOS DESTACADOS -->
+
         <section id="destacados" class="productos">
 
             <h2>Productos destacados</h2>
+
 
             <div class="productos-contenedor">
 
 
                 <!-- PRODUCTO 1 -->
+
                 <div class="producto">
 
                     <div class="producto-imagen">
@@ -101,19 +153,22 @@
 
                     <h3>Playera básica</h3>
 
-                    <p>Playera cómoda para uso diario.</p>
+                    <p>
+                        Playera cómoda y versátil para uso diario.
+                    </p>
 
                     <strong>$299.00</strong>
 
-                    <button
-                        onclick="agregarAlCarrito('Playera básica', 299)">
+                    <button onclick="agregarAlCarrito('Playera básica', 299)">
                         Agregar al carrito
                     </button>
 
                 </div>
 
 
+
                 <!-- PRODUCTO 2 -->
+
                 <div class="producto">
 
                     <div class="producto-imagen">
@@ -122,19 +177,22 @@
 
                     <h3>Tenis casuales</h3>
 
-                    <p>Tenis cómodos para cualquier ocasión.</p>
+                    <p>
+                        Tenis cómodos para cualquier ocasión.
+                    </p>
 
                     <strong>$799.00</strong>
 
-                    <button
-                        onclick="agregarAlCarrito('Tenis casuales', 799)">
+                    <button onclick="agregarAlCarrito('Tenis casuales', 799)">
                         Agregar al carrito
                     </button>
 
                 </div>
 
 
+
                 <!-- PRODUCTO 3 -->
+
                 <div class="producto">
 
                     <div class="producto-imagen">
@@ -143,19 +201,22 @@
 
                     <h3>Mochila urbana</h3>
 
-                    <p>Mochila práctica para escuela o trabajo.</p>
+                    <p>
+                        Mochila práctica para escuela o trabajo.
+                    </p>
 
                     <strong>$599.00</strong>
 
-                    <button
-                        onclick="agregarAlCarrito('Mochila urbana', 599)">
+                    <button onclick="agregarAlCarrito('Mochila urbana', 599)">
                         Agregar al carrito
                     </button>
 
                 </div>
 
 
+
                 <!-- PRODUCTO 4 -->
+
                 <div class="producto">
 
                     <div class="producto-imagen">
@@ -164,12 +225,13 @@
 
                     <h3>Reloj casual</h3>
 
-                    <p>Diseño moderno para complementar tu estilo.</p>
+                    <p>
+                        Diseño moderno para complementar tu estilo.
+                    </p>
 
                     <strong>$449.00</strong>
 
-                    <button
-                        onclick="agregarAlCarrito('Reloj casual', 449)">
+                    <button onclick="agregarAlCarrito('Reloj casual', 449)">
                         Agregar al carrito
                     </button>
 
@@ -182,7 +244,9 @@
     </main>
 
 
+
     <!-- NOTIFICACIÓN -->
+
     <div id="notificacion" class="notificacion">
 
         <strong>NexWeb</strong>
@@ -192,7 +256,9 @@
     </div>
 
 
+
     <!-- PIE DE PÁGINA -->
+
     <footer class="footer">
 
         <p>NexWeb © 2026</p>
@@ -200,90 +266,140 @@
     </footer>
 
 
-    
+
+    <!-- JAVASCRIPT -->
+
     <script>
 
-        let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    // Revisamos que todos los productos tengan una cantidad
+    for (let i = 0; i < carrito.length; i++) {
+
+        if (!carrito[i].cantidad || isNaN(carrito[i].cantidad)) {
+            carrito[i].cantidad = 1;
+        }
+
+    }
 
 
-        function agregarAlCarrito(nombre, precio) {
+    function agregarAlCarrito(nombre, precio) {
 
-            const productoExistente = carrito.find(
-                producto => producto.nombre === nombre
-            );
+        let productoEncontrado = null;
 
 
-            if (productoExistente) {
+        for (let i = 0; i < carrito.length; i++) {
 
-                productoExistente.cantidad++;
+            if (carrito[i].nombre === nombre) {
 
-            } else {
-
-                carrito.push({
-                    nombre: nombre,
-                    precio: precio,
-                    cantidad: 1
-                });
+                productoEncontrado = carrito[i];
 
             }
 
-
-            localStorage.setItem(
-                "carrito",
-                JSON.stringify(carrito)
-            );
+        }
 
 
-            actualizarContador();
+        if (productoEncontrado != null) {
 
+            productoEncontrado.cantidad =
+                Number(productoEncontrado.cantidad) + 1;
 
-            mostrarNotificacion(
-                nombre + " se agregó al carrito"
-            );
+        }
+
+        else {
+
+            carrito.push({
+
+                nombre: nombre,
+
+                precio: precio,
+
+                cantidad: 1
+
+            });
 
         }
 
 
-       function actualizarContador() {
-    const contador = document.getElementById("contadorCarrito");
-
-    if (!contador) return;
-
-    const cantidadTotal = carrito.reduce((total, producto) => {
-        return total + (Number(producto.cantidad) || 0);
-    }, 0);
-
-    contador.textContent = cantidadTotal;
-}
-
-        function mostrarNotificacion(mensaje) {
-
-            const notificacion =
-                document.getElementById("notificacion");
-
-
-            const mensajeNotificacion =
-                document.getElementById("mensajeNotificacion");
-
-
-            mensajeNotificacion.textContent = mensaje;
-
-
-            notificacion.classList.add("mostrar");
-
-
-            setTimeout(() => {
-
-                notificacion.classList.remove("mostrar");
-
-            }, 3000);
-
-        }
+        localStorage.setItem(
+            "carrito",
+            JSON.stringify(carrito)
+        );
 
 
         actualizarContador();
 
-    </script>
+
+        mostrarNotificacion(
+            nombre + " se agregó al carrito"
+        );
+
+    }
+
+
+    function actualizarContador() {
+
+        let contador =
+            document.getElementById("contadorCarrito");
+
+        let cantidad = 0;
+
+
+        for (let i = 0; i < carrito.length; i++) {
+
+            let numero =
+                Number(carrito[i].cantidad);
+
+            if (!isNaN(numero)) {
+
+                cantidad = cantidad + numero;
+
+            }
+
+        }
+
+
+        contador.textContent = cantidad;
+
+    }
+
+
+    function mostrarNotificacion(mensaje) {
+
+        let notificacion =
+            document.getElementById("notificacion");
+
+        let texto =
+            document.getElementById("mensajeNotificacion");
+
+
+        texto.textContent = mensaje;
+
+
+        notificacion.classList.add("mostrar");
+
+
+        setTimeout(function () {
+
+            notificacion.classList.remove("mostrar");
+
+        }, 3000);
+
+    }
+
+
+    // Guardamos nuevamente el carrito corregido
+    localStorage.setItem(
+        "carrito",
+        JSON.stringify(carrito)
+    );
+
+
+    actualizarContador();
+
+</script>
+
 
 </body>
+
 </html>
