@@ -1,381 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>NexWeb - Inicio</title>
-
-    <link rel="stylesheet" href="css/inicio.css">
-
+    <title>NexWeb - Tu Tienda de Calzado</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
-
-
-    <!-- ENCABEZADO -->
-
-    <header class="encabezado">
-
-        <div class="logo">
-            <a href="index.html">NexWeb</a>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo-nexweb.jpg" alt="Logotipo NexWeb" style="width: 140px; height: auto;">
         </div>
-
-
-        <nav class="menu">
-
+        <nav>
             <a href="index.html">Inicio</a>
-
-            <a href="../Interfaces/interfaces.html">Productos</a>
-
-            <a href="../Chat/chat.html">Chat</a>
-
-            <a href="../Login/login.html">Iniciar sesión</a>
-
+            <a href="interfaces.html">Catálogo</a>
+            <a href="login.html">Iniciar Sesión</a>
+            <a href="registro.html">Registrarse</a>
         </nav>
-
-
-        <a href="../Interfaces/carrito.html" class="carrito">
-
-            🛒 Carrito
-
-            <span id="contadorCarrito">0</span>
-
-        </a>
-
     </header>
 
-
-
-    <!-- CONTENIDO PRINCIPAL -->
-
     <main>
-
-
-        <!-- INICIO -->
-
-        <section class="inicio">
-
-            <h1>Bienvenido a NexWeb</h1>
-
-            <p>
-                Tu tienda en línea para encontrar productos de calzado de distintas marcas.
-            </p>
-
-            <a href="#destacados" class="boton">
-                Ver productos
-            </a>
-
+        <section class="hero">
+            <h1>Encuentra tu estilo, pisada a pisada</h1>
+            <p>Tu tienda en línea para encontrar productos de calzado de distintas marcas con la mejor calidad y comodidad.</p>
+            <a href="interfaces.html" class="btn">Ver Catálogo Completo</a>
         </section>
-
-
-
-        <!-- CATEGORÍAS -->
 
         <section class="categorias">
-
-            <h2>Categorías</h2>
-
-
-            <div class="categorias-contenedor">
-<div class="categoria">
-<h3>Deportivo</h3>
-<p>Tenis ideales para entrenar, correr y hacer ejercicio.</p>
-</div>
-
-<div class="categoria">
-    <h3>Casual</h3>
-    <p>Diseños cómodos para usar todos los días.</p>
-</div>
-
-<div class="categoria">
-    <h3>Dama</h3>
-    <p>Encuentra tenis para mujer con estilo y comodidad.</p>
-</div>
-
-<div class="categoria">
-    <h3>Caballero</h3>
-    <p>Tenis para hombre que combinan estilo y comodidad.</p>
-</div>
-
-                
-
-             
+            <h2>Nuestras Categorías</h2>
+            <div class="grid-categorias">
+                <div class="card">
+                    <img src="img/cat-deportivo.jpg" alt="Deportivo" style="width: 100%; border-radius: 8px;">
+                    <h3>Deportivo</h3>
+                    <p>Tenis ideales para entrenar, correr y dar el máximo rendimiento en cada rutina.</p>
+                </div>
+                <div class="card">
+                    <img src="img/cat-casual.jpg" alt="Casual" style="width: 100%; border-radius: 8px;">
+                    <h3>Casual</h3>
+                    <p>Estilo urbano y versátil para complementar tu día a día con total comodidad.</p>
+                </div>
+                <div class="card">
+                    <img src="img/cat-dama.jpg" alt="Dama" style="width: 100%; border-radius: 8px;">
+                    <h3>Dama</h3>
+                    <p>Diseños exclusivos, texturas y colores en tendencia pensados especialmente para ellas.</p>
+                </div>
+                <div class="card">
+                    <img src="img/cat-caballero.jpg" alt="Caballero" style="width: 100%; border-radius: 8px;">
+                    <h3>Caballero</h3>
+                    <p>Modelos robustos, clásicos y modernos que marcan tendencia masculina.</p>
+                </div>
             </div>
-
         </section>
 
-
-
-        <!-- PRODUCTOS DESTACADOS -->
-
-        <section id="destacados" class="productos">
-
-            <h2>Productos destacados</h2>
-
-
-            <div class="productos-contenedor">
-
-
-                
-              <!-- PRODUCTO 1 -->
-
-<div class="producto">
-
-    <div class="producto-imagen">
-        👟
-    </div>
-
-    <h3>Converse</h3>
-
-    <p>
-        Tenis clásicos Converse, cómodos y perfectos para cualquier estilo.
-    </p>
-
-    <strong>$1,299.00</strong>
-
-    <button onclick="agregarAlCarrito('Converse', 1299)">
-        Agregar al carrito
-    </button>
-
-</div>
-
-
-<!-- PRODUCTO 2 -->
-
-<div class="producto">
-
-    <div class="producto-imagen">
-        👟
-    </div>
-
-    <h3>Vans</h3>
-
-    <p>
-        Tenis Vans con diseño casual para todos los días.
-    </p>
-
-    <strong>$1,199.00</strong>
-
-    <button onclick="agregarAlCarrito('Vans', 1199)">
-        Agregar al carrito
-    </button>
-
-</div>
-
-
-<!-- PRODUCTO 3 -->
-
-<div class="producto">
-
-    <div class="producto-imagen">
-        👟
-    </div>
-
-    <h3>Nike</h3>
-
-    <p>
-        Tenis Nike deportivos con comodidad y estilo.
-    </p>
-
-    <strong>$1,899.00</strong>
-
-    <button onclick="agregarAlCarrito('Nike', 1899)">
-        Agregar al carrito
-    </button>
-
-</div>
-
-
-<!-- PRODUCTO 4 -->
-
-<div class="producto">
-
-    <div class="producto-imagen">
-        👟
-    </div>
-
-    <h3>Adidas</h3>
-
-    <p>
-        Tenis Adidas ideales para combinar comodidad y moda.
-    </p>
-
-    <strong>$1,699.00</strong>
-
-    <button onclick="agregarAlCarrito('Adidas', 1699)">
-        Agregar al carrito
-    </button>
-
-</div>
-
+        <section class="productos-destacados">
+            <h2>Productos Destacados</h2>
+            <div class="grid-productos">
+                <div class="producto">
+                    <img src="img/prod-converse.jpg" alt="Converse" style="width: 100%; border-radius: 8px;">
+                    <h3>Converse Clásicos</h3>
+                    <p>El icónico diseño de bota que nunca pasa de moda y combina con todo.</p>
+                </div>
+                <div class="producto">
+                    <img src="img/prod-vans.jpg" alt="Vans" style="width: 100%; border-radius: 8px;">
+                    <h3>Vans Old Skool</h3>
+                    <p>Estilo skate clásico con su inconfundible franja lateral blanca.</p>
+                </div>
+                <div class="producto">
+                    <img src="img/prod-nike.jpg" alt="Nike" style="width: 100%; border-radius: 8px;">
+                    <h3>Nike Air Max</h3>
+                    <p>Amortiguación superior y un look deportivo que destaca en las calles.</p>
+                </div>
+                <div class="producto">
+                    <img src="img/prod-adidas.jpg" alt="Adidas" style="width: 100%; border-radius: 8px;">
+                    <h3>Adidas Superstar</h3>
+                    <p>El clásico diseño urbano con punta de concha reconocido mundialmente.</p>
+                </div>
             </div>
-
         </section>
-
     </main>
 
-
-
-    <!-- NOTIFICACIÓN -->
-
-    <div id="notificacion" class="notificacion">
-
-        <strong>NexWeb</strong>
-
-        <span id="mensajeNotificacion"></span>
-
-    </div>
-
-
-
-    <!-- PIE DE PÁGINA -->
-
-    <footer class="footer">
-
-        <p>NexWeb © 2026</p>
-
+    <footer>
+        <p>&copy; 2026 NexWeb. Todos los derechos reservados.</p>
     </footer>
-
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-    // Revisamos que todos los productos tengan una cantidad
-    for (let i = 0; i < carrito.length; i++) {
-
-        if (!carrito[i].cantidad || isNaN(carrito[i].cantidad)) {
-            carrito[i].cantidad = 1;
-        }
-
-    }
-
-
-    function agregarAlCarrito(nombre, precio) {
-
-        let productoEncontrado = null;
-
-
-        for (let i = 0; i < carrito.length; i++) {
-
-            if (carrito[i].nombre === nombre) {
-
-                productoEncontrado = carrito[i];
-
-            }
-
-        }
-
-
-        if (productoEncontrado != null) {
-
-            productoEncontrado.cantidad =
-                Number(productoEncontrado.cantidad) + 1;
-
-        }
-
-        else {
-
-            carrito.push({
-
-                nombre: nombre,
-
-                precio: precio,
-
-                cantidad: 1
-
-            });
-
-        }
-
-
-        localStorage.setItem(
-            "carrito",
-            JSON.stringify(carrito)
-        );
-
-
-        actualizarContador();
-
-
-        mostrarNotificacion(
-            nombre + " se agregó al carrito"
-        );
-
-    }
-
-
-    function actualizarContador() {
-
-        let contador =
-            document.getElementById("contadorCarrito");
-
-        let cantidad = 0;
-
-
-        for (let i = 0; i < carrito.length; i++) {
-
-            let numero =
-                Number(carrito[i].cantidad);
-
-            if (!isNaN(numero)) {
-
-                cantidad = cantidad + numero;
-
-            }
-
-        }
-
-
-        contador.textContent = cantidad;
-
-    }
-
-
-    function mostrarNotificacion(mensaje) {
-
-        let notificacion =
-            document.getElementById("notificacion");
-
-        let texto =
-            document.getElementById("mensajeNotificacion");
-
-
-        texto.textContent = mensaje;
-
-
-        notificacion.classList.add("mostrar");
-
-
-        setTimeout(function () {
-
-            notificacion.classList.remove("mostrar");
-
-        }, 3000);
-
-    }
-
-
-    // Guardamos nuevamente el carrito corregido
-    localStorage.setItem(
-        "carrito",
-        JSON.stringify(carrito)
-    );
-
-
-    actualizarContador();
-
-</script>
-
-
 </body>
-
 </html>
