@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras | NexWeb</title>
+    <link rel="stylesheet" href="interfaces.css">
+</head>
+<body>
+
+   <header class="encabezado">
+        <h1><a href="../Inicio/index.html" class="logo-link">NexWeb</a></h1>
+        <nav>
+            <a href="../Inicio/index.html">Inicio</a>
+            <a href="interfaces.html">Catálogo</a>
+            <a href="carrito.html"id="nav-carrito">Carrito</a>
+            <a href="../Login/login.html">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main class="carrito-contenedor">
+        <h2>Tu Carrito de Compras</h2>
+
+        <div id="lista-carrito" class="lista-carrito">
+            <!-- Aquí se cargarán dinámicamente los productos agregados -->
+        </div>
+
+        <div id="resumen-carrito" class="resumen-carrito">
+            <h3>Resumen de Compra</h3>
+            <p>Total a pagar: <strong id="total-precio">$0 MXN</strong></p>
+            <button id="btn-vaciar" class="btn-secundario">Vaciar Carrito</button>
+            <button id="btn-comprar" class="btn-principal">Proceder al Pago</button>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>
