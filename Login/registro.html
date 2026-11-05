@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NexWeb - Acceso</title>
+    <title>NexWeb - Registro</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body class="auth-body">
@@ -11,8 +11,12 @@
         <div class="auth-logo">
             <img src="../img/logo-nexweb.jpg" alt="Logotipo NexWeb" style="width: 120px; height: auto;">
         </div>
-        <h2>Bienvenido a NexWeb</h2>
+        <h2>Crea tu cuenta</h2>
         <form>
+            <div class="form-group">
+                <label for="nombre">Nombre completo: </label>
+                <input type="text" id="nombre" required placeholder="Tu nombre">
+            </div>
             <div class="form-group">
                 <label for="email">Correo electrónico:</label>
                 <input type="email" id="email" required placeholder="tu@correo.com">
@@ -21,15 +25,11 @@
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" required placeholder="********">
             </div>
-            <button type="submit" class="btn">Ingresar</button>
+            <button type="submit" class="btn">Registrarse</button>
         </form>
-        <p class="auth-redirect">¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+        <p class="auth-redirect">¿Ya tienes cuenta? <a href="login.html">Inicia sesiónaquí</a></p>
         <p style="margin-top: 15px;"><a href="../index.html" style="color: #666; text-decoration: none;">← Volver a la tienda</a></p>
     </div>
 </body>
 </html>
 
-    <script src="login.js"></script>
-</body>
-
-</html>
