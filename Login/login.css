@@ -87,3 +87,17 @@ button:hover {
     text-decoration: none;
     font-weight: bold;
 }
+/* Estilo del botón volver al inicio */
+.volver {
+    display: inline-block;
+    margin-bottom: 15px;
+    color: #171717;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.volver:hover {
+    color: #ff9f1c;
+}
