@@ -11,6 +11,79 @@
 
     <link rel="stylesheet" href="css/inicio.css">
 
+   <!-- ESTILO DEL CHAT -->
+    <style>
+        .chat-flotante-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0b132b; /* Azul oscuro/negro */
+            color: #ffffff;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+        .chat-flotante-btn:hover { background-color: #1c2541; }
+
+        .chat-ventana {
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
+            width: 350px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1000;
+            border: 1px solid #e0e0e0;
+            font-family: Arial, sans-serif;
+        }
+        .chat-ventana.oculta { display: none; }
+
+        .chat-header {
+            background-color: #0b132b;
+            color: #ffffff;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #3a506b; /* Azul claro */
+        }
+        .chat-titulo { font-weight: bold; display: flex; align-items: center; gap: 8px; }
+        .estado-online { width: 10px; height: 10px; background-color: #4CAF50; border-radius: 50%; }
+        .chat-cerrar { background: none; border: none; color: #ffffff; font-size: 18px; cursor: pointer; }
+
+        .chat-historial {
+            height: 300px;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f4f6f8;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .mensaje { padding: 10px 14px; border-radius: 15px; max-width: 80%; font-size: 14px; line-height: 1.4; }
+        .mensaje.bot { background-color: #e2e8f0; color: #0b132b; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .mensaje.usuario { background-color: #3a506b; color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+        .chat-input { display: flex; padding: 12px; background-color: #ffffff; border-top: 1px solid #eeeeee; }
+        .chat-input input { flex-grow: 1; padding: 10px; border: 1px solid #cccccc; border-radius: 20px; outline: none; }
+        .chat-input input:focus { border-color: #3a506b; }
+        .chat-input button {
+            background-color: #3a506b; color: white; border: none; width: 40px; height: 40px;
+            border-radius: 50%; margin-left: 10px; cursor: pointer; display: flex; justify-content: center; align-items: center;
+        }
+        .chat-input button:hover { background-color: #0b132b; }
+    </style>
+    
 </head>
 
 
@@ -255,7 +328,22 @@
 
     </div>
 
+<!-- CHAT FLOTANTE ESTRUCTURA -->
+    <button id="btn-abrir-chat" class="chat-flotante-btn">💬 Soporte en línea</button>
 
+    <div id="ventana-chat" class="chat-ventana oculta">
+        <div class="chat-header">
+            <div class="chat-titulo"><span class="estado-online"></span> Soporte NexWeb</div>
+            <button id="btn-cerrar-chat" class="chat-cerrar">✖</button>
+        </div>
+        <div class="chat-historial" id="chat-historial">
+            <div class="mensaje bot">¡Hola! Bienvenida a NexWeb. ¿En qué podemos ayudarte hoy?</div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="mensaje-input" placeholder="Escribe tu mensaje..." required>
+            <button id="btn-enviar" type="button">➤</button>
+        </div>
+    </div>
 
     <!-- PIE DE PÁGINA -->
 
@@ -399,6 +487,102 @@
 
 </script>
 
+<!-- LÓGICA DEL CHAT CON RESPUESTAS AUTOMÁTICAS Y TALLAS -->
+<script>
+    const btnAbrirChat = document.getElementById('btn-abrir-chat');
+    const btnCerrarChat = document.getElementById('btn-cerrar-chat');
+    const ventanaChat = document.getElementById('ventana-chat');
+    const btnEnviar = document.getElementById('btn-enviar');
+    const inputMensaje = document.getElementById('mensaje-input');
+    const historialChat = document.getElementById('chat-historial');
+
+    // 1. Cargar el historial guardado
+    function cargarHistorial() {
+        const mensajesGuardados = JSON.parse(localStorage.getItem("chatHistorial")) || [];
+        historialChat.innerHTML = '<div class="mensaje bot">¡Hola! Bienvenida a NexWeb. ¿En qué podemos ayudarte hoy?</div>';
+        mensajesGuardados.forEach(msg => agregarMensajeUI(msg.tipo, msg.texto));
+        setTimeout(() => historialChat.scrollTop = historialChat.scrollHeight, 50);
+    }
+
+    // 2. Funciones para dibujar el texto y guardarlo
+    function agregarMensajeUI(tipo, texto) {
+        const div = document.createElement('div');
+        div.classList.add('mensaje', tipo);
+        div.textContent = texto;
+        historialChat.appendChild(div);
+    }
+
+    function guardarEnHistorial(tipo, texto) {
+        const mensajesGuardados = JSON.parse(localStorage.getItem("chatHistorial")) || [];
+        mensajesGuardados.push({ tipo: tipo, texto: texto });
+        localStorage.setItem("chatHistorial", JSON.stringify(mensajesGuardados));
+    }
+
+    // 3. El "Cerebro" del Bot (Palabras clave y Tallas)
+    function responderComoBot(mensajeUsuario) {
+        const texto = mensajeUsuario.toLowerCase();
+        let respuesta = "Disculpa, no entendí bien. ¿Podrías preguntarme sobre envíos, pagos, o nuestros tenis (Converse, Vans, Nike, Adidas)?";
+
+        // Detector: Busca si el usuario escribió un número entre el 22 y el 30
+        const tallaMencionada = texto.match(/\b(2[2-9]|30)\b/);
+
+        // Lógica de detección
+        if (texto.includes("hola") || texto.includes("buen")) {
+            respuesta = "¡Hola! Qué gusto saludarte. ¿Buscas algún calzado en especial o accesorios?";
+        } else if (texto.includes("converse")) {
+            respuesta = "¡Claro! Los tenis clásicos Converse están en $1,299.00. Puedes agregarlos desde la sección de destacados.";
+        } else if (texto.includes("vans")) {
+            respuesta = "Tenemos los tenis Vans de diseño casual a $1,199.00. ¡Están muy cómodos!";
+        } else if (texto.includes("nike") || texto.includes("adidas")) {
+            respuesta = "Contamos con deportivos Nike a $1,899.00 y Adidas a $1,699.00. ¿De qué talla buscas?";
+        } else if (tallaMencionada) { 
+            // Si detectó un número válido, lo usa en la respuesta
+            respuesta = `¡Sí! Tenemos la talla ${tallaMencionada[0]} disponible. Todos nuestros modelos vienen a la medida exacta mexicana. ¿Te los preparamos?`;
+        } else if (texto.includes("talla") || texto.includes("numero") || texto.includes("medida") || texto.includes("quedan")) {
+            respuesta = "Manejamos tallas desde el 22 hasta el 30 mexicano. Si no te quedan, tu primer cambio es completamente gratis.";
+        } else if (texto.includes("envio") || texto.includes("envío") || texto.includes("entrega") || texto.includes("llega")) {
+            respuesta = "Los envíos tardan de 3 a 5 días hábiles y son gratis en toda tu compra.";
+        } else if (texto.includes("pago") || texto.includes("tarjeta") || texto.includes("comprar")) {
+            respuesta = "Puedes pagar con tarjeta de crédito, débito o efectivo directamente desde tu Carrito de compras.";
+        }
+
+        agregarMensajeUI('bot', respuesta);
+        guardarEnHistorial('bot', respuesta);
+        historialChat.scrollTop = historialChat.scrollHeight;
+    }
+
+    // 4. Enviar mensaje y temporizador del bot
+    function enviarMensajeLocal() {
+        const texto = inputMensaje.value.trim();
+        if (texto !== '') {
+            agregarMensajeUI('usuario', texto);
+            guardarEnHistorial('usuario', texto);
+            inputMensaje.value = '';
+            historialChat.scrollTop = historialChat.scrollHeight;
+
+            setTimeout(() => {
+                responderComoBot(texto);
+            }, 1000);
+        }
+    }
+
+    // 5. Eventos de clics y teclas
+    btnAbrirChat.addEventListener('click', () => {
+        ventanaChat.classList.remove('oculta');
+        btnAbrirChat.style.display = 'none';
+        cargarHistorial(); 
+    });
+
+    btnCerrarChat.addEventListener('click', () => {
+        ventanaChat.classList.add('oculta');
+        btnAbrirChat.style.display = 'block';
+    });
+
+    btnEnviar.addEventListener('click', enviarMensajeLocal);
+    inputMensaje.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') enviarMensajeLocal();
+    });
+</script>
 
 </body>
 
