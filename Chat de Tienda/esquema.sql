@@ -1,0 +1,3 @@
+-- Este esquema (BD "tienda_simple") quedó reemplazado.
+-- El chat ahora usa la tabla  mensajes_chat  de la BD  nexweb.
+-- Ejecuta:  Base de datos/database.sql
