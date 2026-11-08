@@ -331,6 +331,9 @@
 
     <!-- JAVASCRIPT -->
 
+    <!-- Conexión con la API / base de datos -->
+    <script src="../js/nexweb.js"></script>
+
     <script>
 
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -490,6 +493,12 @@
         const mensajesGuardados = JSON.parse(localStorage.getItem("chatHistorial")) || [];
         mensajesGuardados.push({ tipo: tipo, texto: texto });
         localStorage.setItem("chatHistorial", JSON.stringify(mensajesGuardados));
+
+        // También se guarda en la base de datos (tabla mensajes_chat)
+        if (typeof NexWeb !== "undefined") {
+            NexWeb.api("chat.php", { metodo: "POST", datos: { tipo: tipo, mensaje: texto } })
+                .catch(error => console.warn("Chat no guardado en BD:", error.message));
+        }
     }
 
     // 3. El "Cerebro" del Bot (Palabras clave y Tallas)
