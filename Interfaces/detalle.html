@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del producto | NexWeb</title>
+    <link rel="stylesheet" href="interfaces.css">
+</head>
+<body>
+
+   <header class="encabezado">
+        <h1><a href="../Inicio/index.html" class="logo-link">NexWeb</a></h1>
+        <nav>
+            <a href="../Inicio/index.html">Inicio</a>
+            <a href="interfaces.html">Catálogo</a>
+            <a href="carrito.html">Carrito</a>
+            <a href="../Login/login.html">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main class="detalle-producto">
+        <a href="interfaces.html" class="volver">← Volver al catálogo</a>
+
+        <section class="detalle-contenido">
+            <div class="detalle-imagen">
+                <img id="imagen-producto" src="" alt="Tenis">
+            </div>
+
+            <div class="detalle-informacion">
+                <span id="marca-producto"></span>
+                <h2 id="nombre-producto">Cargando producto...</h2>
+                <p id="categoria-producto"></p>
+                <h3 id="precio-producto"></h3>
+
+                <label for="talla-producto">Selecciona tu talla:</label>
+                <select id="talla-producto">
+                    <option value="">Selecciona una talla</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                </select>
+
+                <label for="cantidad-producto">Cantidad:</label>
+                <input type="number" id="cantidad-producto" min="1" value="1">
+
+                <button id="agregar-carrito">Agregar al carrito</button>
+                <p id="mensaje"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/nexweb.js"></script>
+    <script src="detalle.js"></script>
+</body>
+</html>
