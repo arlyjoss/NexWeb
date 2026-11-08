@@ -1,8 +1,3 @@
-CREATE DATABASE IF NOT EXISTS tienda_simple;
-USE tienda_simple;
-
-CREATE TABLE IF NOT EXISTS chat (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    mensaje TEXT NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- Este esquema (BD "tienda_simple") quedó reemplazado.
+-- El chat ahora usa la tabla  mensajes_chat  de la BD  nexweb.
+-- Ejecuta:  Base de datos/database.sql
