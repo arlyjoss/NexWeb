@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Crear cuenta | NexWeb</title>
-
     <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
-
     <div class="contenedor">
-
         <div class="login">
+            <!-- Enlace para regresar a la página principal -->
+            <a href="../Inicio/index.html" class="volver">← Volver al inicio</a>
+
+            <!-- Logotipo de NexWeb -->
+            <div style="text-align: center; margin-bottom: 15px;">
+                <img src="../img/logo-nexweb.jpg" alt="Logotipo NexWeb" style="width: 90px; height: auto; border-radius: 8px;">
+            </div>
 
             <!--LOGOTIPO DE NEXWEB -->
             <div style="text-align: center; margin-bottom: 15px;">
@@ -22,67 +23,32 @@
 
             <h1>NexWeb</h1>
             <h2>Crear cuenta</h2>
-
-            <p class="subtitulo">
-                Regístrate para comenzar
-            </p>
+            <p class="subtitulo">Regístrate para comenzar</p>
 
             <form>
-
                 <label for="nombre">Nombre completo</label>
-
-                <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    placeholder="Ingresa tu nombre"
-                    required
-                >
+                <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
 
                 <label for="correo">Correo electrónico</label>
-
-                <input
-                    type="email"
-                    id="correo"
-                    name="correo"
-                    placeholder="ejemplo@correo.com"
-                    required
-                >
+                <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
 
                 <label for="contrasena">Contraseña</label>
-
-                <input
-                    type="password"
-                    id="contrasena"
-                    name="contrasena"
-                    placeholder="Crea una contraseña"
-                    required
-                >
+                <input type="password" id="contrasena" name="contrasena" placeholder="Crea una contraseña" required>
 
                 <label for="confirmar">Confirmar contraseña</label>
+                <input type="password" id="confirmar" name="confirmar" placeholder="Repite tu contraseña" required>
 
-                <input
-                    type="password"
-                    id="confirmar"
-                    name="confirmar"
-                    placeholder="Repite tu contraseña"
-                    required
-                >
-
-                <button type="submit">
-                    Crear cuenta
-                </button>
-
+                <button type="submit">Crear cuenta</button>
             </form>
 
             <p class="registro">
                 ¿Ya tienes una cuenta?
                 <a href="login.html">Inicia sesión</a>
             </p>
-
         </div>
-
     </div>
+
+    <script src="../js/nexweb.js"></script>
     <script src="login.js"></script>
 </body>
 

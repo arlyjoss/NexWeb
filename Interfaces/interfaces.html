@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | NexWeb</title>
+    <link rel="stylesheet" href="interfaces.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+        <h1><a href="../Inicio/index.html" class="logo-link">NexWeb</a></h1>
+        <nav>
+            <a href="../Inicio/index.html">Inicio</a>
+            <a href="interfaces.html">Catálogo</a>
+            <a href="carrito.html" id="nav-carrito">Carrito (0)</a>
+            <a href="../Login/login.html">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="presentacion">
+            <h2>Encuentra tus próximos tenis favoritos</h2>
+            <p>Descubre modelos de tus marcas favoritas.</p>
+        </section>
+
+        <section class="catalogo">
+            <h2>Nuestros tenis</h2>
+<!-- BARRA DE FILTROS -->
+            <div class="filtros-contenedor">
+                <div class="filtro-grupo">
+                    <label for="filtro-marca">Marca:</label>
+                    <select id="filtro-marca">
+                        <option value="todas">Todas las marcas</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Asics">Asics</option>
+                        <option value="Converse">Converse</option>
+                        <option value="Fila">Fila</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Nike">Nike</option>
+                        <option value="Vans">Vans</option>
+                    </select>
+                </div>
+
+                <div class="filtro-grupo">
+                    <label for="filtro-categoria">Categoría:</label>
+                    <select id="filtro-categoria">
+                        <option value="todas">Todas las categorías</option>
+                        <option value="Deportivo">Deportivo</option>
+                        <option value="Casual">Casual</option>
+                    </select>
+                </div>
+            </div>
+            <!-- CONTENEDOR DE PRODUCTOS -->
+            <div id="lista-productos" class="productos">
+                <!-- Los productos se cargarán con JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/nexweb.js"></script>
+    <script src="productos.js"></script>
+
+</body>
+
+</html>
